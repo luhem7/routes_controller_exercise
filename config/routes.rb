@@ -2,6 +2,8 @@ ControllerExercise::Application.routes.draw do
 
 
   get '/products' => 'products#index'
+  get '/products/index' => 'products#index'
+  post '/products' => 'products#index'
 
   resources :users
 
