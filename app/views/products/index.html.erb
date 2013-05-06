@@ -26,12 +26,18 @@
 	<% end %>
 </table>
 
+<hr>
+
 <div id="paginationBar">
 	<span>Navigate <%=number_of_pages%> pages:</span>
 
-<form method='post' action="/products">
+<form method='post' action="/products/index">
 	<% for i in (1..number_of_pages) %>
 		<input class="pageNumber" type="submit" name="page_start" value="<%= i %>" />
 	<% end %>
 </form>
 </div>
+
+<hr>
+
+<%= link_to "Add a new product", products_new_path %>

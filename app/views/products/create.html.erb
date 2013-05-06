@@ -1,0 +1,19 @@
+<h1> Create View </h1>
+
+<% product = Product.new(params[:product]) %>
+<% product.save %>
+
+<br/>
+
+<% if product.save %>
+	<h2> Your product has been saved! </h2>
+	<p>
+		Product details: <br>
+		Name: <%= product.name %> <br>
+		Price: <%= product.price %>
+	</p>
+<% else %>
+	<h2>Your Product was not saved. Here is why:</h2>
+	<%= product.errors.full_messages %>
+	Please go to the previous page and fix the issues.
+<% end %>
