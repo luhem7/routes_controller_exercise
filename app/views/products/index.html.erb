@@ -7,7 +7,7 @@
 		number_start = ((params[:page_start].to_i) - 1)*number_displayed;
 	end
 
-	lots_of_products = Product.includes(:user).limit(number_displayed).offset(number_start);
+	lots_of_products = Product.includes(:user).limit(number_displayed).offset(number_start).order(:price);
 %>
 
 <table>
@@ -21,7 +21,13 @@
 		<tr>
 			<td><%= product.name %></td>
 			<td>$<%= product.price %></td>
-			<td><%= product.user.name %></td>
+			<td>
+				<% if product.user.nil? %>
+					[Anonymous]
+				<% else %>
+					<%=  product.user.name %>
+				<% end %>
+			</td>
 		</tr>
 	<% end %>
 </table>
